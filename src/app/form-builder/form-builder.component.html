@@ -1,23 +1,4 @@
 <section>
-  <div class="buttons">
-    <button mat-raised-button color="primary">Create Form</button>
-    <button
-      mat-raised-button
-      type="file"
-      (click)="fileInput.click()"
-      color="primary"
-    >
-      <span>Load Form</span>
-      <input
-        type="file"
-        #fileInput
-        accept=".json"
-        (change)="loadDefinition($event)"
-        style="display: none"
-      />
-    </button>
-  </div>
-
   <div class="new-form">
     <form class="form">
       <div *ngFor="let field of fControls | keyvalue">
@@ -81,8 +62,25 @@
         >
           Add Field
         </button>
-        <button mat-raised-button color="primary" (click)="saveDefinition()">
+
+        <button style="margin-right: 1rem" mat-raised-button color="primary" (click)="saveDefinition()">
           Save Form
+        </button>
+
+        <button
+          mat-raised-button
+          type="file"
+          (click)="fileInput.click()"
+          color="primary"
+        >
+          <span>Load Form</span>
+          <input
+            type="file"
+            #fileInput
+            accept=".json"
+            (change)="loadDefinition($event)"
+            style="display: none"
+          />
         </button>
       </div>
     </form>
