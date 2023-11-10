@@ -1,0 +1,90 @@
+<section>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Create Form</button>
+    <button
+      mat-raised-button
+      type="file"
+      (click)="fileInput.click()"
+      color="primary"
+    >
+      <span>Load Form</span>
+      <input
+        type="file"
+        #fileInput
+        accept=".json"
+        (change)="loadDefinition($event)"
+        style="display: none"
+      />
+    </button>
+  </div>
+
+  <div class="new-form">
+    <form class="form">
+      <div *ngFor="let field of fControls | keyvalue">
+        <mat-form-field
+          *ngIf="field.value.type === 'string'"
+          appearance="outline"
+        >
+          <mat-label>{{ field.value.name }}</mat-label>
+          <input
+            (ngModelChange)="valueChange($event, field.value.name)"
+            [formControl]="field.value.control"
+            matInput
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="field.value.type === 'number'"
+          appearance="outline"
+        >
+          <mat-label>{{ field.value.name }}</mat-label>
+          <input
+            type="number"
+            (ngModelChange)="valueChange($event, field.value.name)"
+            [formControl]="field.value.control"
+            matInput
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="field.value.type === 'boolean'"
+          appearance="outline"
+        >
+          <mat-label>{{ field.value.name }}</mat-label>
+          <mat-select>
+            <mat-option [value]="true">true</mat-option>
+            <mat-option [value]="false">false</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="field.value.type === 'date'"
+          class="example-full-width"
+          appearance="outline"
+        >
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="buttons-row">
+        <button
+          mat-raised-button
+          style="margin-right: 1rem"
+          color="primary"
+          (click)="openTypePicker()"
+        >
+          Add Field
+        </button>
+        <button mat-raised-button color="primary" (click)="saveDefinition()">
+          Save Form
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

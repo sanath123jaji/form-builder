@@ -1,0 +1,53 @@
+section {
+   margin: 1rem;
+}
+
+.buttons {
+   border: 1px solid black;
+   border-radius: 2rem;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 10px;
+}
+
+.new-form {
+   margin-top: 20px;
+   border: 1px solid black;
+   border-radius: 2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+
+.form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 1rem;
+}
+
+.form-inner {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}
+
+.field-margin {
+   margin: 10px;
+}
+
+.w-100 {
+   width: 100%;
+}
+
+.buttons-row {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 100%;
+}

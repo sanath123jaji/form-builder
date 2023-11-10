@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <mat-form-field appearance="outline">
+        <mat-label>Select Form Type</mat-label>
+        <mat-select [(value)]="selectedFormType">
+       <div *ngFor="let type of formTypes">
+
+           <mat-option [value]="type">{{type}}</mat-option>
+       </div>
+          
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Field Name</mat-label>
+        <input [formControl]="formNameControl" matInput>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!formNameControl.valid" color="primary" (click)="submitFormType()">Add Field</button>
+</div>
